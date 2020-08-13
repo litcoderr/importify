@@ -1,20 +1,17 @@
 """
 This demo demonstrates parse() method that implements argument parsing fucntionality based on object elements.
-
-Usage:
 """
 
 from . import MasterConfig
 
 
 if __name__ == "__main__":
+    # Initialize Serializable Instance
     master_config = MasterConfig()
-    print('before parsing:')
-    print(master_config.export_dict())
-    
-    # parse
+
+    # Parse. Done !!
     master_config.parse()
-    
-    print('after parseing:')
+
+    # Checkout result
     print(master_config.export_dict())
 

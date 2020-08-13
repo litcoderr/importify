@@ -1,25 +1,26 @@
 # temporary for test use
 import sys
-sys.path.insert(0, "/Users/litcoderr/project/loadit")
+sys.path.insert(0, "/Users/litcoderr/project/importify")
 #####
 """
 This demonstrates how you can construct a serializable configuration object
 """
-from loadit import Serializable
+from importify import Serializable
 
 
 class MasterConfig(Serializable):
     def __init__(self):
-        self.loadit_is_awesome = True
-        self.loadit_sub_config = NestedConfig()
+        super().__init__()
+        self.is_awesome = True
+        self.nested = NestedConfig()
 
 
 class NestedConfig(Serializable):
     def __init__(self):
-        self.loadit_is_legit = True
-        self.loadit_sub_sub_config = NestedNestedConfig()
+        self.is_legit = True
+        self.double_nested = DoubleNestedConfig()
 
 
-class NestedNestedConfig(Serializable):
+class DoubleNestedConfig(Serializable):
     def __init__(self):
-        self.loadit_can_go_deep = True
+        self.is_intuitive = True
