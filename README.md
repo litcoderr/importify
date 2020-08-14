@@ -54,15 +54,15 @@ Following is a recommended usage.
     
     2-1. Parse command line arguments.
 
-        ```
-        python -m your_module --use_gpu False
-        ```
+    ```
+    python -m your_module --use_gpu False
+    ```
 
     2-2. Import from pre-exported configuration json file. Use ```--load_json``` option.
     
-        ```
-        python -m your_module --load_json PATH_TO_JSON_FILE
-        ```
+    ```
+    python -m your_module --load_json PATH_TO_JSON_FILE
+    ```
 
 3. Export current settings to json.
 
