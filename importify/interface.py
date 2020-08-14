@@ -100,41 +100,7 @@ class Serializable:
     def parse(self):
         self.parser.parse()
 
-    def parse_(self):
-        """Implement argument parsing functionality based on object elements
-        """
-        parser = argparse.ArgumentParser()
-        for key, value in self.strip_dict().items():
-            parser.add_argument('--{}'.format(key), type=type(value))
-        args = parser.parse_args()
-        print(vars(args))
-        self.unstrip_dict(vars(args))
-
     # Utility
-    def strip_dict(self, prefix: str = "") -> Dict[str, Any]:
-        """Strips dictionary recursively.
-
-        Args:
-            prefix: prefix string.
-
-        Returns:
-            dictionary with stripped keys.
-        """
-        stripped_dict = {}
-        for key, value in self.__dict__.items():
-            if isinstance(value, Serializable):
-                for k, v in value.strip_dict(prefix=prefix + key + DELIM).items():
-                    stripped_dict[k] = v
-            else:
-                stripped_dict[prefix + key] = value
-        return stripped_dict
-
-    # Utility
-    @staticmethod
-    def is_base(key):
-        BASE = ['parser']
-        return key in BASE
-
     def strip(self, prefix: str = "") -> Dict[str, Any]:
         """ Strip arguments.
 
@@ -186,6 +152,11 @@ class Serializable:
             return getattr(self, child_attr_name).get_attribute(key_path)
         else:
             return self, key_path[0]
+
+    @staticmethod
+    def is_base(key):
+        BASE = ['parser']
+        return key in BASE
 
 
 class SerializableParser:
