@@ -75,7 +75,7 @@ Following is a recommended usage.
     ```
    
 ## Usage
-Please refer to [https://github.com/litcoderr/importify/tree/master/examples](examples) code.
+Please refer to [examples](https://github.com/litcoderr/importify/tree/master/examples) code.
 
 ## Contributions
 Please commit any issues or pull requests. Every bit of contributions are welcomed.
