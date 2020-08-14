@@ -1,5 +1,5 @@
 # Importify
-Import and export your configuration like a boss !!
+> Import and export your configuration like a boss
 
 ## Installation
 Install using pypi distribution using following command.
@@ -54,7 +54,7 @@ Following is a recommended usage.
     
     2-1. Parse command line arguments.
 
-        (BASH)
+        (BASH) <br>
         
         ```
         python -m your_module --use_gpu False
@@ -62,7 +62,7 @@ Following is a recommended usage.
 
     2-2. Import from pre-exported configuration json file. Use ```--load_json``` option.
     
-        (BASH)
+        (BASH) <br>
         
         ```
         python -m your_module --load_json PATH_TO_JSON_FILE
