@@ -52,13 +52,13 @@ Following is a recommended usage.
     config.parse()
     ```
     
-    2-1. Parse command line arguments.
+    2-1. Parse command line arguments. example)
 
     ```
-    python -m your_module --use_gpu False
+    python -m your_module --use_gpu False --model_config.output_dim 256
     ```
 
-    2-2. Import from pre-exported configuration json file. Use ```--load_json``` option.
+    2-2. Import from pre-exported configuration json file. Use ```--load_json``` option. example)
     
     ```
     python -m your_module --load_json PATH_TO_JSON_FILE

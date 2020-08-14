@@ -69,11 +69,12 @@ class Serializable:
         return succeed
 
     # Import Methods
-    def import_dict(self, data: Dict[str, Any]):
+    def import_dict(self, data: Dict[str, Any], ignore_error: bool = True):
         """Import arguments from dictionary
 
         Args:
             data: dictionary that consists child argument recursively.
+            ignore_error: ignore error if True.
         """
         for key, value in data.items():
             if hasattr(self, key):
@@ -81,6 +82,9 @@ class Serializable:
                     setattr(self, key, getattr(self, key).import_dict(value))
                 else:
                     setattr(self, key, value)
+            else:
+                if not ignore_error:
+                    raise KeyError("[!] Invalid key during import")
         return self
 
     @classmethod
