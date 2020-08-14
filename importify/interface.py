@@ -12,7 +12,15 @@ import argparse
 DELIM = "."
 
 
-def json_serializable(x):
+def json_serializable(x: Any) -> bool:
+    """ Check if x is json serializable
+
+    Args:
+        x: any value
+
+    Returns:
+        Return true if x is json serializable. Else, return False
+    """
     try:
         json.dumps(x)
         return True
@@ -21,6 +29,11 @@ def json_serializable(x):
 
 
 class Serializable:
+    """ Serializable
+
+    Attributes:
+        parser: Serializable Parser
+    """
     def __init__(self):
         self.parser = SerializableParser(instance=self)
 
@@ -53,6 +66,7 @@ class Serializable:
 
         Args:
             path: path of json file to be saved.
+            ignore_error: whether to ignore error.
 
         Returns:
             succeed saving json file or not.
@@ -161,17 +175,37 @@ class Serializable:
             return self, key_path[0]
 
     @staticmethod
-    def is_base(key):
+    def is_base(key: str) -> bool:
+        """
+
+        Args:
+            key: key
+
+        Returns:
+            if key named argument is from Serializable parent code.
+        """
         BASE = ['parser']
         return key in BASE
 
 
 class SerializableParser:
+    """ Serializable Parser
+
+    Attributes:
+         instance: Serializable instance
+    """
     def __init__(self, instance):
+        """ Constructor
+
+        Args:
+            instance: Serializable instance
+        """
         self.instance = instance
 
     def parse(self):
         """Parse method.
+
+        Automatically generate attributes and initialize using argument parser.
         """
         # Strip dicts for parser
         dicts = self.instance.strip()
