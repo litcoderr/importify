@@ -105,7 +105,6 @@ class Serializable:
         """ Strip arguments.
 
         Args:
-            instance: Parent Serializable instance
             prefix: Prefix string.
 
         Returns:
@@ -172,6 +171,7 @@ class SerializableParser:
         # Parse
         boolean_keys = []
         parser = argparse.ArgumentParser()
+        parser.add_argument('--load_json', type=str, default=None)
         for key, value in dicts.items():
             if type(value) == bool:
                 boolean_keys.append(key)
@@ -185,13 +185,18 @@ class SerializableParser:
                 parser.add_argument('--{key}'.format(key=key), type=type(value), default=value)
         args = vars(parser.parse_args())
 
-        # Deal with stringed boolean attributes
-        for key in boolean_keys:
-            if args[key] == "True":
-                args[key] = True
-            else:
-                args[key] = False
+        if args['load_json'] is None:
+            # Deal with stringed boolean attributes
+            for key in boolean_keys:
+                if args[key] == "True":
+                    args[key] = True
+                else:
+                    args[key] = False
 
-        # Unstrip and Update
-        for stripped_key, res in self.instance.unstrip(args).items():
-            setattr(res["reference"], res["key"], res["value"])
+            # Unstrip and Update
+            for stripped_key, res in self.instance.unstrip(args).items():
+                setattr(res["reference"], res["key"], res["value"])
+        else:
+            with open(args['load_json'], 'r') as file:
+                data = json.load(file)
+            self.instance.import_dict(data)

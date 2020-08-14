@@ -1,1 +1,1 @@
-{"is_awesome": true, "nested": {"is_legit": true, "double_nested": {"is_intuitive": true}}}
+{"is_awesome": true, "nested": {"is_legit": false, "double_nested": {"is_intuitive": true}}}

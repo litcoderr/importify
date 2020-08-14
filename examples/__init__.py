@@ -1,7 +1,3 @@
-# temporary for test use
-import sys
-sys.path.insert(0, "/Users/litcoderr/project/importify")
-#####
 """
 This demonstrates how you can construct a serializable configuration object
 """
