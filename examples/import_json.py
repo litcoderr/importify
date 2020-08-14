@@ -1,3 +1,9 @@
+# Copyright 2020 by Youngchae James Chee.
+# Github: https://github.com/litcoderr
+# All rights reserved.
+# This file is released under the "MIT License Agreement".
+# Please see the LICENSE file.
+
 """
 This demo demonstrates import_json() method
 that imports data from json file and loads recursively.
