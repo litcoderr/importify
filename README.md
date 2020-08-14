@@ -54,16 +54,12 @@ Following is a recommended usage.
     
     2-1. Parse command line arguments.
 
-        (BASH) <br>
-        
         ```
         python -m your_module --use_gpu False
         ```
 
     2-2. Import from pre-exported configuration json file. Use ```--load_json``` option.
     
-        (BASH) <br>
-        
         ```
         python -m your_module --load_json PATH_TO_JSON_FILE
         ```
